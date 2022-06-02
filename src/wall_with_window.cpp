@@ -67,7 +67,7 @@ void clickCallback(const geometry_msgs::PoseStamped& msg) {
   {
     pcl::PointXYZ pt(map_cloud_->points[i].x, map_cloud_->points[i].y, map_cloud_->points[i].z);
     // if (-radius/2<pt.x && pt.x<radius/2 && -len2_<pt.y && pt.y<len2_ && height-radius/2<pt.z && pt.z<height+radius/2) // e.g. remove all pts below zAvg
-    if (-radius<pt.x && pt.x<radius && -10<pt.y && pt.y<10 && window_height-radius<pt.z && pt.z<window_height+radius) // e.g. remove all pts below zAvg
+    if (-radius<pt.x && pt.x<radius && -radius<pt.y && pt.y<radius && window_height-radius<pt.z && pt.z<window_height+radius) // e.g. remove all pts below zAvg
     {
       inliers->indices.push_back(i);
     }
