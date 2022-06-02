@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="pcd_file"/>
+
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find map_generator)/launch/include/map_gen.rviz" required="true" /> -->
+
+    <!-- map -->
+    <node pkg ="pcl_ros" name ="pcd2pointcloud" type ="pcd_to_pointcloud" args = "$(find map_generator)/launch/pcd/$(arg pcd_file) 0.1" output = "screen">
+        <remap from="/cloud_pcd" to="/map_generator/global_cloud" />
+        <param name="frame_id" value="world" />
+    </node>
+
+</launch>
